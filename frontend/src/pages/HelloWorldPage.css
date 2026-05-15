@@ -1,0 +1,50 @@
+/* ── Status dot ── */
+.hw-dot {
+  display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.hw-dot-idle    { background: #d1d5db; }
+.hw-dot-waiting { background: #d1d5db; }
+.hw-dot-running { background: #3b82f6; animation: hw-pulse 1s infinite; }
+.hw-dot-done    { background: #10b981; }
+.hw-dot-error   { background: #ef4444; }
+@keyframes hw-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── Meta row (badge + timing) ── */
+.hw-meta {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.hw-badge {
+  font-size: 11px; font-weight: 600; padding: 2px 9px;
+  border-radius: 10px; border: 1px solid; white-space: nowrap;
+}
+.hw-time {
+  font-size: 11px; font-weight: 600; font-family: ui-monospace, monospace;
+  background: #f1f5f9; border: 1px solid #e2e8f0; color: #64748b;
+  padding: 2px 8px; border-radius: 4px;
+}
+
+/* ── Error box ── */
+.hw-error {
+  padding: 12px 14px; margin: 8px 0;
+  background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: 8px; color: #dc2626; font-size: 13px; line-height: 1.5;
+}
+
+/* ── Thinking progress bar (L2) ── */
+.hw-thinking-bar {
+  height: 3px; background: #e2e8f0; border-radius: 2px; overflow: hidden;
+}
+.hw-thinking-bar::after {
+  content: ''; display: block; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--c, #7c3aed), transparent);
+  animation: hw-bar 1.4s ease-in-out infinite;
+}
+
+/* ── Shimmer (skeleton) ── */
+@keyframes hw-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes hw-bar { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
+@keyframes hw-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }

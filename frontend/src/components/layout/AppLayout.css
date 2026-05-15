@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  --sw: 230px;
+}
+.layout.collapsed { --sw: 60px; }
+
+/* ── Sidebar ── */
+.sidebar {
+  width: var(--sw);
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.22s cubic-bezier(.4,0,.2,1);
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  min-height: 60px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.brand-icon {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.brand-name {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.collapse-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.collapse-btn:hover { background: #f8fafc; color: #374151; border-color: #cbd5e1; }
+.collapse-btn svg { transition: transform 0.22s; }
+.collapse-btn svg.rotated { transform: rotate(180deg); }
+
+/* ── Nav ── */
+.sidebar-nav {
+  flex: 1;
+  padding: 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #64748b;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.15s;
+  overflow: hidden;
+  text-decoration: none;
+}
+.nav-item:hover  { background: #f8fafc; color: #0f172a; }
+.nav-item.active {
+  background: #f5f3ff;
+  color: #5b21b6;
+  border-left: 3px solid #5b21b6;
+  padding-left: 7px;
+  font-weight: 600;
+}
+.nav-item.active .nav-icon { color: #5b21b6; }
+.nav-icon  { flex-shrink: 0; }
+.nav-label { overflow: hidden; }
+
+/* ── Footer ── */
+.sidebar-footer {
+  padding: 10px 8px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+.user-name  {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.user-email {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.logout-btn:hover { border-color: #fca5a5; color: #ef4444; background: #fef2f2; }
+.logout-btn-solo { margin: 0 auto; }
+
+/* ── Main content ── */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 32px;
+  background: #f8fafc;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 768px) {
+  .sidebar { position: fixed; z-index: 100; height: 100vh; }
+  .main-content { padding: 20px 16px; }
+}
