@@ -1,22 +1,8 @@
-# Python
+﻿node_modules/
+.venv/
 __pycache__/
 *.pyc
 .env
-
-# Virtual environments
-venv/
-.env/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
+build/
+dist/
 *.log
-
-# IDE
-.vscode/
-.idea/
-
-# Secrets
-**/service_account*.json
